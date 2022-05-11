@@ -6,6 +6,7 @@ module "web" {
     app_name = "web"
     use_github = true
     org_name = var.org_name
+    github_org_name = var.github_org_name
 
     github_oauth_client_id = var.github_oauth_client_id
     ado_oauth_client_id = var.ado_oauth_client_id
