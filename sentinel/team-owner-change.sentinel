@@ -7,5 +7,5 @@ tfe_teams = filter tfplan.resource_changes as _, resources {
 }
 
 main = rule {
-	length(tfe_teams) == 0
+	tfe_teams != null and length(tfe_teams) == 0
 }
