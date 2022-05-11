@@ -1,11 +1,10 @@
 import "tfplan/v2" as tfplan
-import "tfstate/v2" as tfstate
 
-tfe_teams = filter tfplan.resource_changes as _, resources {
-	resources.type == "tfe_team" and
-	resources.change.after.name != tfplan.variables.team_owner.value
+tfe_teams = filter tfplan.resource_changes as _, resource {
+	resource.type == "tfe_team" and
+	resource.change.after.name != tfplan.variables.team_owner.value
 }
 
 main = rule {
-	tfe_teams != null and length(tfe_teams) == 0
+	length(tfe_teams) == 0
 }

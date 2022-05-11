@@ -30,7 +30,7 @@ resource "tfe_policy_set" "onboarding-policies" {
   description   = "Contains policies that govern workspace onboarding automation"
   organization  = var.org_name
   policies_path = "sentinel/"
-  workspace_ids = concat(local.tag_workspaces["team_a"], local.tag_workspaces["root"])
+  workspace_ids = concat(local.tag_workspaces["team_a"])
 
   vcs_repo {
     identifier         = "peytoncasper/tfc-onboarding"
