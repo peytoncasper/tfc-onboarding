@@ -1,0 +1,15 @@
+import "tfconfig/v2" as tfconfig
+
+allowed_modules = [
+	"app.terraform.io/tfc4b-peyton/team-onboarding-module/tfe",
+	"./ado_repo",
+	"./github_repo",
+]
+
+deny_list = filter tfconfig.module_calls as _, modules {
+	allowed_modules not contains modules.source 
+}
+
+main = rule {
+	length(deny_list) == 0
+}

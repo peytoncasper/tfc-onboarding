@@ -1,0 +1,16 @@
+import "tfplan/v2" as tfplan
+import "tfstate/v2" as tfstate
+
+tfe_teams = filter tfstate.resources as _, resources {
+	resources.type == "tfe_team"
+}
+
+deny_team_owner_change = rule {
+	all tfe_teams as _, team {
+		team.values.name == tfplan.variables.team_owner.value
+	}
+}
+
+main = rule {
+	deny_team_owner_change
+}

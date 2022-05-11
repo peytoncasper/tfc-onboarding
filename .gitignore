@@ -1,0 +1,7 @@
+.DS_Store
+**/.terraform
+**/.terraform.lock.hcl
+**/.sentinel
+**/testdata
+**/backend.tf
+SETUP.md
