@@ -1,9 +1,11 @@
 data "tfe_oauth_client" "ado" {
-  oauth_client_id = "oc-STqC7WV58WqViMvB"
+  oauth_client_id = var.ado_oauth_client_id
+  count = var.ado_oauth_client_id != "" ? 1 : 0
 }
 
 data "tfe_oauth_client" "github" {
-  oauth_client_id = "oc-6dX3RSYf58r1VB9X"
+  oauth_client_id = var.github_oauth_client_id
+  count = var.github_oauth_client_id != "" ? 1 : 0
 }
 
 data "tfe_team" "app" {
@@ -36,7 +38,7 @@ locals {
   # If GitHub get the GitHub OAuth token id
   # Else If ADO get the ADO OAuth token id
   # Else ""
-  vcs_token_id = var.use_github ? data.tfe_oauth_client.github.oauth_token_id : var.use_ado ? data.tfe_oauth_client.ado.oauth_token_id : ""
+  vcs_token_id = var.use_github ? data.tfe_oauth_client.github.0.oauth_token_id : var.use_ado ? data.tfe_oauth_client.ado.0.oauth_token_id : ""
 }
 
 resource "tfe_workspace" "app" {

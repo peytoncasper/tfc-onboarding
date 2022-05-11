@@ -2,6 +2,7 @@ import "tfconfig/v2" as tfconfig
 
 allowed_modules = [
 	"app.terraform.io/tfc4b-peyton/team-onboarding-module/tfe",
+	"app.terraform.io/tfc4b-peyton/app-onboarding-module/tfe"
 	"./ado_repo",
 	"./github_repo",
 ]

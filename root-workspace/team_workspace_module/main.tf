@@ -78,6 +78,25 @@ resource "tfe_variable" "github_org_name" {
   sensitive    = false
 }
 
+resource "tfe_variable" "github_oauth_client_id" {
+  key          = "github_oauth_client_id"
+  value        = var.github_oauth_client_id
+  category     = "terraform"
+  workspace_id = tfe_workspace.team.0.id
+  description  = "GitHub OAuth Client ID"
+  sensitive    = false
+}
+
+resource "tfe_variable" "ado_oauth_client_id" {
+  key          = "ado_oauth_client_id"
+  value        = var.ado_oauth_client_id
+  category     = "terraform"
+  workspace_id = tfe_workspace.team.0.id
+  description  = "ADO OAuth Client ID"
+  sensitive    = false
+}
+
+
 resource "tfe_team" "team" {
   name         = "${var.team_name}"
   organization = var.org_name
