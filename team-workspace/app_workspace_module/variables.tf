@@ -21,6 +21,7 @@ variable "ado_org_name" {
 }
 variable "ado_oauth_client_id" {
     type = string
+    default = ""
 }
 
 
@@ -39,4 +40,5 @@ variable "github_org_name" {
 }
 variable "github_oauth_client_id" {
     type = string
+    default = ""
 }
