@@ -103,7 +103,7 @@ resource "tfe_team" "team" {
 }
 
 resource "tfe_team_access" "team" {
-  access       = "write"
+  access       = "read"
   team_id      = tfe_team.team.id
   workspace_id = tfe_workspace.team.0.id
 }
