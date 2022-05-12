@@ -1,0 +1,9 @@
+import "tfplan/v2" as tfplan
+
+deny_list = filter tfplan.resource_changes as _, resource {
+	resource.module.address != ""
+}
+
+main = rule {
+	length(deny_list) == 0
+}

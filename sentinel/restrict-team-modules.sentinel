@@ -8,7 +8,7 @@ allowed_modules = [
 ]
 
 deny_list = filter tfconfig.module_calls as _, modules {
-	allowed_modules not contains modules.source 
+	allowed_modules not contains modules.source
 }
 
 main = rule {
